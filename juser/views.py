@@ -191,7 +191,7 @@ def user_add(request):
                     for user_group_id in groups:
                         user_groups.extend(UserGroup.objects.filter(id=user_group_id))
 
-            except IndexError, e:
+            except ServerError as e:
                 error = u'添加用户 %s 失败 %s ' % (username, e)
                 try:
                     db_del_user(username)

@@ -23,6 +23,9 @@ def start_django():
     http_port = CONFIG.HTTP_LISTEN_PORT or '8080'
     os.chdir(apps_dir)
     print('start django')
+    #subprocess是python创建子进程的工具，其实和c中的fork出一个子进程，然后在子进程中运行exec执行另外一个进程很类似。
+    #父进程等待子进程完成
+    # #返回退出信息(returncode，相当于exit code)
     subprocess.call('python ./manage.py runserver %s:%s' % (http_host, http_port), shell=True)
 
 
